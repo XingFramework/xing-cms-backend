@@ -61,6 +61,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'xing_backend_token_auth', "~> 0.1.31"
   spec.add_dependency 'xing-backend', "~> 0.0.18"
   spec.add_dependency 'rails', "~> 4.2.1"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec-activemodel-mocks"
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "json_spec"
   spec.add_development_dependency "factory_girl_rails"

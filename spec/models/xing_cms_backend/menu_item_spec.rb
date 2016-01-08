@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module XingCmsBackend
-  describe MenuItem, :skip => true do
+  describe MenuItem do
     describe "mass assignment" do
        it "should mass assign name and path" do
          location = MenuItem.new(:name => 'foo', :path => 'bar' )

@@ -10,13 +10,13 @@ FactoryGirl.define do
     parent nil
   end
 
-  factory :menu_item do
+  factory :menu_item, :class => XingCmsBackend::MenuItem do
     name 'test'
-    parent_id { Menu.main_menu.id }
+    # parent_id { Menu.main_menu.id }
   end
 
   factory :menu_item_with_page, :parent => :menu_item do
-    association :page
+    # association :page
   end
 
   factory :menu_item_without_page, :parent => :menu_item do
