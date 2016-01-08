@@ -221,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   factory_girl_rails
+  json_spec
   minitest
   pg
   rspec-rails
