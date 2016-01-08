@@ -58,8 +58,8 @@ Gem::Specification.new do |spec|
   spec.rdoc_options              += %w{--main doc/README }
   spec.rdoc_options              += ["--title", "#{spec.name}-#{spec.version} Documentation"]
 
-  # spec.add_dependency 'xing_backend_token_auth', "~> 0.1.31"
-  # spec.add_dependency 'xing-backend', "~> 0.0.18"
+  spec.add_dependency 'xing_backend_token_auth', "~> 0.1.31"
+  spec.add_dependency 'xing-backend', "~> 0.0.18"
   spec.add_dependency 'rails', "~> 4.2.1"
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "factory_girl_rails"

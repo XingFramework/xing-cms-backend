@@ -13,3 +13,6 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+# TODO this is here because of test warnings, it's probably a bug in rails or something
+# temp fix
+gem 'minitest'
