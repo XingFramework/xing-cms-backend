@@ -3,8 +3,8 @@ module XingCmsBackend
 
     # GET /admin/menu_items/:id
     def show
-      # @menu_item = MenuItem.find(params[:id])
-      # render :json => Admin::MenuItemSerializer.new(@menu_item)
+      @menu_item = MenuItem.find(params[:id])
+      render :json => Admin::MenuItemSerializer.new(@menu_item)
     end
 
     # POST /admin/menu-items
@@ -31,8 +31,10 @@ module XingCmsBackend
 
     # DELETE /admin/menu_items/:id
     def destroy
-      # menu_item = MenuItem.find(params[:id])
-      # menu_item.destroy
+      menu_item = MenuItem.find(params[:id])
+      menu_item.destroy
+
+      render :nothing => true
 
       # redirect_to menus_path
     end

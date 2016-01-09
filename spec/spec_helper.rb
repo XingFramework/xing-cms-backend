@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../test_app/config/environment", __FILE__)
+require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 # require 'rspec/autorun'
 require 'factory_girl_rails'
@@ -40,4 +40,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   # config.order = "random"
+end
+
+def engine_routes
+  XingCmsBackend::Engine.routes.url_helpers
 end

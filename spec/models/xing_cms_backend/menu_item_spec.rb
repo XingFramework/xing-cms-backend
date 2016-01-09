@@ -3,23 +3,23 @@ require 'spec_helper'
 module XingCmsBackend
   describe MenuItem do
     describe "mass assignment" do
-       it "should mass assign name and path" do
-         location = MenuItem.new(:name => 'foo', :path => 'bar' )
-         expect(location.name).to eq('foo')
-         expect(location.path).to eq('bar')
-       end
-     end
+      it "should mass assign name and path" do
+        location = MenuItem.new(:name => 'foo', :path => 'bar' )
+        expect(location.name).to eq('foo')
+        expect(location.path).to eq('bar')
+      end
+    end
 
-     # describe "validations" do
-     #   describe "presence" do
-     #     it "should not create a location with blank name" do
-     #       expect(FactoryGirl.build(:location, :name => nil)).not_to be_valid
-     #     end
-     #    it "should allow alocation with a name" do
-     #      expect(FactoryGirl.build(:location, :name => 'foo')).to be_valid
-     #    end
-     #   end
-     # end
+    describe "validations" do
+      describe "presence" do
+        it "should not create a menu item  with blank name" do
+          expect(FactoryGirl.build(:menu_item, :name => nil)).not_to be_valid
+        end
+        it "should allow a menu item  with a name" do
+          expect(FactoryGirl.build(:menu_item, :name => 'foo')).to be_valid
+        end
+      end
+    end
 
      # describe "resolved path" do
      #   it "should return the page permalink if there's a page foreign key" do

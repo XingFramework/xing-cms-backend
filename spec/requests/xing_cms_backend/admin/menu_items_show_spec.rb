@@ -1,65 +1,66 @@
 require 'spec_helper'
+module XingCmsBackend
+  describe "admin/menu_items#show", :type => :request do
+    # routes { XingCmsBackend::Engine.routes }
+    # let :admin do FactoryGirl.create(:admin) end
 
-describe "admin/menu_items#show", :type => :request do
+    describe "GET admin/menu_items/:id" do
 
-  # let :admin do FactoryGirl.create(:admin) end
+      context "with a menu item that represents a page" do
+        let :menu_item do
+          FactoryGirl.create(:menu_item_with_page)
+        end
+        it "generates correct json" do
+          # authenticated_json_get admin, "admin/menu_items/#{menu_item.id}"
+          json_get "/xing_cms_backend/admin/menu_items/#{menu_item.id}"
 
-  describe "GET admin/menu_items/:id" do
+          expect(response).to be_success
+          expect(response.body).to     have_json_path("links")
+          expect(response.body).to     have_json_path("links/self")
+          expect(response.body).to     have_json_path("data")
+          expect(response.body).to     have_json_path("data/name")
+          expect(response.body).not_to have_json_path("data/path")
+          expect(response.body).to     have_json_path("data/parent_id")
 
-    context "with a menu item that represents a page" do
-      let :menu_item do
-        FactoryGirl.create(:menu_item_with_page)
+          expect(response.body).to be_json_eql("\"#{routes.admin_menu_item_path(menu_item)}\"").at_path('links/self')
+          expect(response.body).to be_json_eql("\"#{menu_item.name}\"").at_path("data/name")
+        end
       end
-      it "generates correct json" do
-        # authenticated_json_get admin, "admin/menu_items/#{menu_item.id}"
-        json_get "admin/menu_items/#{menu_item.id}"
 
-        expect(response).to be_success
-        expect(response.body).to     have_json_path("links")
-        expect(response.body).to     have_json_path("links/self")
-        expect(response.body).to     have_json_path("data")
-        expect(response.body).to     have_json_path("data/name")
-        expect(response.body).not_to have_json_path("data/path")
-        expect(response.body).to     have_json_path("data/parent_id")
+      # context "with a menu item that reperesents a raw URL" do
+      #   let :menu_item do
+      #     FactoryGirl.create(:menu_item_without_page)
+      #   end
 
-        expect(response.body).to be_json_eql("\"#{routes.admin_menu_item_path(menu_item)}\"").at_path('links/self')
-        expect(response.body).to be_json_eql("\"#{menu_item.name}\"").at_path("data/name")
-      end
+      #   it "generates correct json" do
+      #     authenticated_json_get admin, "admin/menu_items/#{menu_item.id}"
+
+      #     expect(response).to be_success
+      #     expect(response.body).to     have_json_path("links")
+      #     expect(response.body).to     have_json_path("links/self")
+      #     expect(response.body).to     have_json_path("data")
+      #     expect(response.body).to     have_json_path("data/name")
+      #     expect(response.body).to     have_json_path("data/path")
+      #     expect(response.body).not_to have_json_path("data/page")
+      #     expect(response.body).to     have_json_path("data/parent_id")
+
+      #     expect(response.body).to be_json_eql("\"#{routes.admin_menu_item_path(menu_item)}\"").at_path('links/self')
+      #     expect(response.body).to be_json_eql("\"#{menu_item.name}\"").at_path("data/name")
+      #   end
+      # end
+
+
+      # describe "not authenticated" do
+      #   let :menu_item do
+      #     FactoryGirl.create(:menu_item_with_page)
+      #   end
+
+      #   it "should return not authorized" do
+      #     json_get "admin/menu_items/#{menu_item.id}"
+      #     expect(response.status).to be(401)
+      #   end
+
+      # end
     end
-
-    # context "with a menu item that reperesents a raw URL" do
-    #   let :menu_item do
-    #     FactoryGirl.create(:menu_item_without_page)
-    #   end
-
-    #   it "generates correct json" do
-    #     authenticated_json_get admin, "admin/menu_items/#{menu_item.id}"
-
-    #     expect(response).to be_success
-    #     expect(response.body).to     have_json_path("links")
-    #     expect(response.body).to     have_json_path("links/self")
-    #     expect(response.body).to     have_json_path("data")
-    #     expect(response.body).to     have_json_path("data/name")
-    #     expect(response.body).to     have_json_path("data/path")
-    #     expect(response.body).not_to have_json_path("data/page")
-    #     expect(response.body).to     have_json_path("data/parent_id")
-
-    #     expect(response.body).to be_json_eql("\"#{routes.admin_menu_item_path(menu_item)}\"").at_path('links/self')
-    #     expect(response.body).to be_json_eql("\"#{menu_item.name}\"").at_path("data/name")
-    #   end
-    # end
-
-
-    # describe "not authenticated" do
-    #   let :menu_item do
-    #     FactoryGirl.create(:menu_item_with_page)
-    #   end
-
-    #   it "should return not authorized" do
-    #     json_get "admin/menu_items/#{menu_item.id}"
-    #     expect(response.status).to be(401)
-    #   end
-
-    # end
   end
 end

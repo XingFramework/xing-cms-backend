@@ -13,7 +13,7 @@ module XingCmsBackend
 
     factory :menu_item, :class => MenuItem do
       name 'test'
-      # parent_id { Menu.main_menu.id }
+      parent_id { Menu.main_menu.id }
     end
 
     factory :menu_item_with_page, :parent => :menu_item do
@@ -21,7 +21,7 @@ module XingCmsBackend
     end
 
     factory :menu_item_without_page, :parent => :menu_item do
-      page nil
+      # page nil
       path 'test'
     end
 

@@ -10,11 +10,12 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+require 'awesome_nested_set'
 
 module XingCmsBackend
   class MenuItem < ActiveRecord::Base
 
-    # acts_as_nested_set
+    acts_as_nested_set
 
     # belongs_to :page
     belongs_to :parent, :class_name => 'MenuItem'
