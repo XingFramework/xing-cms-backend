@@ -4,9 +4,9 @@ module XingCmsBackend
   describe MenuItem do
     describe "mass assignment" do
       it "should mass assign name and path" do
-        location = MenuItem.new(:name => 'foo', :path => 'bar' )
-        expect(location.name).to eq('foo')
-        expect(location.path).to eq('bar')
+        menu_item = MenuItem.new(:name => 'foo', :path => 'bar' )
+        expect(menu_item.name).to eq('foo')
+        expect(menu_item.path).to eq('bar')
       end
     end
 
@@ -21,19 +21,11 @@ module XingCmsBackend
       end
     end
 
-     # describe "resolved path" do
-     #   it "should return the page permalink if there's a page foreign key" do
-     #     page = FactoryGirl.build(:page, :permalink => 'some/address')
-     #     loc = FactoryGirl.build(:location, :path => 'foobar')
-     #     loc.page = page
-     #     loc.save!
-     #     expect(loc.resolved_path).to eq("/" + page.permalink)
-     #   end
-
-     #   it "should return the location's path if there's no page foreign key" do
-     #     loc = FactoryGirl.build(:location, :path => 'foobar')
-     #     expect(loc.resolved_path).to eq("/" + 'foobar')
-     #   end
-     # end
+    describe "associations" do
+      it "should set up proper associations" do
+        expect(MenuItem.reflect_on_association(:parent).macro).to eq(:belongs_to)
+        expect(MenuItem.reflect_on_association(:page).macro).to eq(:belongs_to)
+      end
+    end
   end
 end

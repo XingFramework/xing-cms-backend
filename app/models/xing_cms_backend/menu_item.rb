@@ -14,13 +14,11 @@ require 'awesome_nested_set'
 
 module XingCmsBackend
   class MenuItem < ActiveRecord::Base
-
     acts_as_nested_set
 
-    # belongs_to :page
+    belongs_to :page
     belongs_to :parent, :class_name => 'MenuItem'
 
     validates_presence_of :name
-
   end
 end
