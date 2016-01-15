@@ -3,6 +3,7 @@ PATH
   specs:
     xing_cms_backend (0.0.1)
       awesome_nested_set
+      babosa
       rails (~> 4.2.1)
       sanitize
       xing-backend (~> 0.0.18)
@@ -52,6 +53,7 @@ GEM
     arel (6.0.3)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
+    babosa (1.0.2)
     bcrypt (3.1.10)
     builder (3.2.2)
     celluloid (0.17.2)

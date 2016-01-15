@@ -63,6 +63,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', "~> 4.2.1"
   spec.add_dependency 'awesome_nested_set'
   spec.add_dependency 'sanitize'
+  spec.add_dependency 'babosa'
 
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-activemodel-mocks"
