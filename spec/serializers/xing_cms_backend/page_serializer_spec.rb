@@ -26,7 +26,7 @@ module XingCmsBackend
       it { is_expected.to have_json_path('data/keywords')}
       it { is_expected.to have_json_path('data/description')}
       it { is_expected.to have_json_path('data/layout')}
-      #it { is_expected.to have_json_size(3).at_path('data/contents')}
+      it { is_expected.to have_json_size(3).at_path('data/contents')}
     end
   end
 end

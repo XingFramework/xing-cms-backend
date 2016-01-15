@@ -2,7 +2,7 @@ require 'xing-backend'
 
 module XingCmsBackend
   class PageSerializer < Xing::Serializers::Base
-    attributes :title, :keywords, :description, :layout#, :contents
+    attributes :title, :keywords, :description, :layout, :contents
 
     #def contents
       #hash = {}
