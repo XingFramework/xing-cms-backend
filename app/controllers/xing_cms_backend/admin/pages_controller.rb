@@ -7,10 +7,10 @@ module XingCmsBackend
     #end
 
     # GET /admin/pages/:url_slug
-    #def show
-      #page = Page.find_by_url_slug(params[:url_slug])
-      #render :json => Admin::PageSerializer.new(page)
-    #end
+    def show
+      page = Page.find_by_url_slug(params[:url_slug])
+      render :json => Admin::PageSerializer.new(page)
+    end
 
     # POST /admin/pages
     #def create

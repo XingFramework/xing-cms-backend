@@ -1,14 +1,16 @@
 require 'spec_helper'
 
 module XingCmsBackend
-  describe Admin::PagesController do
+  describe Admin::PagesController, :type => :controller do
+    routes { XingCmsBackend::Engine.routes }
+
     let :page do
       double(Page)
     end
 
-    #let :serializer do
-      #double(Admin::PageSerializer)
-    #end
+    let :serializer do
+      double(Admin::PageSerializer)
+    end
 
     let :url_slug do
       "test_slug"
@@ -59,7 +61,6 @@ module XingCmsBackend
       #                                      GET SHOW
       ########################################################################################
       describe "responding to GET show" do
-
         it "should find the page and pass it to a serializer" do
           expect(Page).to receive(:find_by_url_slug).with(url_slug).and_return(page)
           expect(Admin::PageSerializer).to receive(:new).with(page).and_return(serializer)
