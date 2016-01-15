@@ -5,5 +5,6 @@ XingCmsBackend::Engine.routes.draw do
   namespace :admin do
     resources :menu_items
     resources :pages, :param => :url_slug
+    resources :content_blocks
   end
 end
