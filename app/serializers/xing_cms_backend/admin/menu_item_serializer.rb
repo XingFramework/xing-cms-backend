@@ -31,6 +31,7 @@ module XingCmsBackend
       { :self => engine_routes.admin_menu_item_path(object)  }
     end
 
+    #TODO: Move this to where all engine serializers can use
     def engine_routes
       XingCmsBackend::Engine.routes.url_helpers
     end
