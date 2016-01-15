@@ -16,9 +16,9 @@ module XingCmsBackend
       #published false
     #end
 
-    #trait :pre_published do
-      #publish_start Time.now + 1.week
-    #end
+    trait :pre_published do
+      publish_start Time.now + 1.week
+    end
 
     factory :one_column_page, :class => Page::OneColumn, :parent => :page do
       after(:create) do |page|
