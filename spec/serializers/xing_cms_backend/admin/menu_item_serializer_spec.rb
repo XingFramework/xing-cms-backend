@@ -15,7 +15,6 @@ module XingCmsBackend
           menu_item_with_page
         end
 
-
         it { is_expected.to     be_present}
         it { is_expected.to     be_json_eql("\"#{engine_routes.admin_menu_item_path(menu_item)}\"").at_path('links/self') }
         it { is_expected.to     have_json_path('data/name')}
