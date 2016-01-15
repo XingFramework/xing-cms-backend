@@ -193,41 +193,42 @@ module XingCmsBackend
       end
     end
 
-    #describe "published scope", :skip => "decide exactly which published parameters we need" do
-      #let! :published_page   do FactoryGirl.create(:one_column_page, :published => true)  end
-      #let! :unpublished_page do FactoryGirl.create(:one_column_page, :published => false) end
+    describe "published scope", :skip => "decide exactly which published parameters we need" do
+      let! :published_page   do FactoryGirl.create(:one_column_page, :published => true)  end
+      let! :unpublished_page do FactoryGirl.create(:one_column_page, :published => false) end
 
-      #it "should include a published page but not unpublished page" do
-        #expect(Page.published).to include(published_page)
-      #end
-      #it "should not include an unpublished page" do
-        #expect(Page.published).not_to include(unpublished_page)
-      #end
-    #end
+      it "should include a published page but not unpublished page" do
+        expect(Page.published).to include(published_page)
+      end
 
-    #describe 'registry' do
-      #before do
-        #class Page::TestPage < Page
-        #end
+      it "should not include an unpublished page" do
+        expect(Page.published).not_to include(unpublished_page)
+      end
+    end
 
-        #class Page::SubTestPage < Page::TestPage
-        #end
-      #end
+    describe 'registry' do
+      before do
+        class Page::TestPage < Page
+        end
 
-      #after do
-        #Page.registry.delete('test_page')
-      #end
+        class Page::SubTestPage < Page::TestPage
+        end
+      end
 
-      #it 'should allow registration of page subclasses' do
-        #Page::TestPage.register('test_page')
-        #expect(Page.registry['test_page']).to eq(Page::TestPage)
-      #end
+      after do
+        Page.registry.delete('test_page')
+      end
 
-      #it "registers sub pages" do
-        #Page::TestPage.register('test_page')
-        #Page::SubTestPage.register('sub_test_page')
-        #expect(Page.registry['sub_test_page']).to eq(Page::SubTestPage)
-      #end
-    #end
+      it 'should allow registration of page subclasses' do
+        Page::TestPage.register('test_page')
+        expect(Page.registry['test_page']).to eq(Page::TestPage)
+      end
+
+      it "registers sub pages" do
+        Page::TestPage.register('test_page')
+        Page::SubTestPage.register('sub_test_page')
+        expect(Page.registry['sub_test_page']).to eq(Page::SubTestPage)
+      end
+    end
   end
 end

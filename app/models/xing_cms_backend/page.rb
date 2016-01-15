@@ -27,7 +27,7 @@ module XingCmsBackend
     include ClassRegistry
 
     #validates_presence_of :title, :url_slug
-    #validates_uniqueness_of :url_slug
+    validates_uniqueness_of :url_slug
 
     has_many :page_contents
     #has_many :content_blocks, :through => :page_contents
