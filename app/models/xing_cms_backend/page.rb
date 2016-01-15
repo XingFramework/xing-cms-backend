@@ -24,7 +24,7 @@ require 'babosa'
 
 module XingCmsBackend
   class Page < ActiveRecord::Base
-    #include ClassRegistry
+    include ClassRegistry
 
     #validates_presence_of :title, :url_slug
     #validates_uniqueness_of :url_slug
@@ -71,9 +71,9 @@ module XingCmsBackend
       conts
     end
 
-    #def layout
-      #self.class.name.split("::")[1..-1].join.underscore
-    #end
+    def layout
+      self.class.name.split("::")[2..-1].join.underscore
+    end
 
     #def to_param
       #url_slug

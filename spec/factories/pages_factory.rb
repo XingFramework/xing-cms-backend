@@ -20,22 +20,22 @@ module XingCmsBackend
       #publish_start Time.now + 1.week
     #end
 
-    #factory :one_column_page, :class => Page::OneColumn, :parent => :page do
-      #after(:create) do |page|
-        #page.page_contents << PageContent.new(
-          #:name => :headline,
-          #:content_block => FactoryGirl.create(:headline)
-        #)
-        #page.page_contents << PageContent.new(
-          #:name => :main,
-          #:content_block => FactoryGirl.create(:main)
-        #)
-        #page.page_contents << PageContent.new(
-          #:name => :styles,
-          #:content_block => FactoryGirl.create(:styles)
-        #)
-      #end
-    #end
+    factory :one_column_page, :class => Page::OneColumn, :parent => :page do
+      after(:create) do |page|
+        page.page_contents << PageContent.new(
+          :name => :headline,
+          :content_block => FactoryGirl.create(:headline)
+        )
+        page.page_contents << PageContent.new(
+          :name => :main,
+          :content_block => FactoryGirl.create(:main)
+        )
+        page.page_contents << PageContent.new(
+          :name => :styles,
+          :content_block => FactoryGirl.create(:styles)
+        )
+      end
+    end
 
     #factory :two_column_page, :class => Page::TwoColumn, :parent => :page do
       #after(:create) do |page|
@@ -75,21 +75,21 @@ module XingCmsBackend
       body         'foo bar'
     end
 
-    #factory :headline, :parent => :content_block do
-      #sequence(:body) {|nn| "This is headline #{nn}"}
-    #end
+    factory :headline, :parent => :content_block do
+      sequence(:body) {|nn| "This is headline #{nn}"}
+    end
 
-    #factory :main, :parent => :content_block do
-      #sequence(:body) do |nn|
-        #"This is body content #{nn}. It has <em>really awesome</em> html content."
-      #end
-    #end
+    factory :main, :parent => :content_block do
+      sequence(:body) do |nn|
+        "This is body content #{nn}. It has <em>really awesome</em> html content."
+      end
+    end
 
-    #factory :styles, :parent => :content_block do
-      #content_type 'text/css'
-      #body do
-        #"div { font-size: 1em; }"
-      #end
-    #end
+    factory :styles, :parent => :content_block do
+      content_type 'text/css'
+      body do
+        "div { font-size: 1em; }"
+      end
+    end
   end
 end
