@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module XingCmsBackend
   describe "admin/menu_items#show", :type => :request do
-    # routes { XingCmsBackend::Engine.routes }
     # let :admin do FactoryGirl.create(:admin) end
 
     describe "GET admin/menu_items/:id" do
