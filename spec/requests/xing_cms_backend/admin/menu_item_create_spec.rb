@@ -30,50 +30,53 @@ module XingCmsBackend
           json_post "/xing_cms_backend/admin/menu_items", json_body
 
           expect(response.status).to eq(201)
-          expect(response.headers["Location"]).to eq(admin_menu_item_path( MenuItem.find_by_name( 'Services' ) ) )
+          expect(response.headers["Location"]).to eq(engine_routes.admin_menu_item_path( MenuItem.find_by_name( 'Services' ) ) )
         end
       end
     end
 
-    #describe "failing creates" do
-      #describe 'required column omitted' do
-        #let :data do
-          #valid_data.deep_merge({data: {name: nil}})
-        #end
+    describe "failing creates" do
+      describe 'required column omitted' do
+        let :data do
+          valid_data.deep_merge({data: {name: nil}})
+        end
 
-        #describe "POST admin/menu_items" do
-          #it "redirects to admin menu item show path" do
+        describe "POST admin/menu_items" do
+          it "redirects to admin menu item show path" do
             #authenticated_json_post admin, "admin/menu_items", json_body
-            #expect(response.status).to eq(422)
-            #expect(response.body).to be_json_eql("\"can't be blank\"").at_path("data/name/message")
-          #end
-        #end
+            json_post "/xing_cms_backend/admin/menu_items", json_body
+            expect(response.status).to eq(422)
+            expect(response.body).to be_json_eql("\"can't be blank\"").at_path("data/name/message")
+          end
+        end
 
-        #describe 'required information omitted' do
-          #let :data do
-            #valid_data.deep_merge({data: {path: nil}})
-          #end
+        describe 'required information omitted' do
+          let :data do
+            valid_data.deep_merge({data: {path: nil}})
+          end
 
-          #describe "POST admin/menu_items" do
-            #it "redirects to admin menu item show path" do
+          describe "POST admin/menu_items" do
+            it "redirects to admin menu item show path" do
               #authenticated_json_post admin, "admin/menu_items", json_body
-              #expect(response.status).to eq(422)
-              #expect(response.body).to be_json_eql("\"This field is required\"").at_path("data/path/message")
-            #end
-          #end
-        #end
-      #end
-    #end
+              json_post "/xing_cms_backend/admin/menu_items", json_body
+              expect(response.status).to eq(422)
+              expect(response.body).to be_json_eql("\"This field is required\"").at_path("data/path/message")
+            end
+          end
+        end
+      end
+    end
 
-    #describe "not authenticated" do
-      #let :data do
-        #valid_data
-      #end
+    # TODO: Still need to bring in authentication
+    describe "not authenticated", :skip => true do
+      let :data do
+        valid_data
+      end
 
-      #it "should return not authorized" do
-        #json_post "admin/menu_items", json_body
-        #expect(response.status).to be(401)
-      #end
-    #end
+      it "should return not authorized" do
+        json_post "admin/menu_items", json_body
+        expect(response.status).to be(401)
+      end
+    end
   end
 end
