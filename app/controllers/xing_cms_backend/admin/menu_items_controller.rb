@@ -9,13 +9,13 @@ module XingCmsBackend
 
     # POST /admin/menu-items
     def create
-      # mapper = MenuItemMapper.new(json_body)
+       mapper = MenuItemMapper.new(json_body)
 
-      # if mapper.save
-      #   successful_create(admin_menu_item_path(mapper.menu_item))
-      # else
-      #   failed_to_process(mapper.errors)
-      # end
+       if mapper.save
+         successful_create(admin_menu_item_path(mapper.menu_item))
+       else
+         failed_to_process(mapper.errors)
+       end
     end
 
     # PUT /admin/menu-items/:id

@@ -56,7 +56,7 @@ GEM
     babosa (1.0.2)
     bcrypt (3.1.10)
     builder (3.2.2)
-    celluloid (0.17.2)
+    celluloid (0.17.3)
       celluloid-essentials
       celluloid-extras
       celluloid-fsm
@@ -78,7 +78,7 @@ GEM
     concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
     crass (1.0.2)
-    devise (3.5.3)
+    devise (3.5.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
