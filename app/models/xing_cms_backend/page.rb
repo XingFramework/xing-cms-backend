@@ -19,14 +19,13 @@
 
 #require 'sitemap'
 
-require 'sanitize'
 require 'babosa'
 
 module XingCmsBackend
   class Page < ActiveRecord::Base
     include ClassRegistry
 
-    #validates_presence_of :title, :url_slug
+    validates_presence_of :title, :url_slug
     validates_uniqueness_of :url_slug
 
     has_many :page_contents
@@ -113,9 +112,10 @@ module XingCmsBackend
     #def sanitize_user_html(content)
       #sanitize_html(content, USER_CONTENT_DEFAULT_SANITIZER)
     #end
-    #def sanitize_admin_html(content)
-      #sanitize_html(content, ADMIN_CONTENT_DEFAULT_SANITIZER)
-    #end
+
+    def sanitize_admin_html(content)
+      sanitize_html(content, ADMIN_CONTENT_DEFAULT_SANITIZER)
+    end
 
     def sanitize_css(content, config = Sanitize::Config::RELAXED)
       Sanitize::CSS.stylesheet(content, config)
