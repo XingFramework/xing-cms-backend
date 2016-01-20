@@ -1,5 +1,3 @@
-require 'xing-backend'
-
 module XingCmsBackend
   class PageSerializer < Xing::Serializers::Base
     attributes :title, :keywords, :description, :layout, :contents

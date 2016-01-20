@@ -1,5 +1,3 @@
-require 'xing-backend'
-
 module XingCmsBackend
   class ContentBlockSerializer < Xing::Serializers::Base
     attributes :content_type, :body

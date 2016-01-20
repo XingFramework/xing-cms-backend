@@ -1,5 +1,3 @@
-require 'xing-backend'
-
 module XingCmsBackend
 
   #TODO: Should extend from Xing::Controllers::Base.

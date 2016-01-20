@@ -1,5 +1,3 @@
-require 'xing-backend'
-
 module XingCmsBackend
   class MenuItemMapper < Xing::Mappers::Base
     alias menu_item record
