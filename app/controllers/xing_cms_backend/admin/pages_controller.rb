@@ -13,15 +13,15 @@ module XingCmsBackend
     end
 
     # POST /admin/pages
-    #def create
-      #mapper = PageMapper.new(json_body)
+    def create
+      mapper = PageMapper.new(json_body)
 
-      #if mapper.save
-        #successful_create(admin_page_path(mapper.page))
-      #else
-        #failed_to_process(mapper.errors)
-      #end
-    #end
+      if mapper.save
+        successful_create(admin_page_path(mapper.page))
+      else
+        failed_to_process(mapper.errors)
+      end
+    end
 
     # PUT /admin/pages/:url_slug
     #def update
