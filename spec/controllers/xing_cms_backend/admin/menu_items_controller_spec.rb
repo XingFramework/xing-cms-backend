@@ -124,36 +124,37 @@ module XingCmsBackend
       ########################################################################################
       #                                      DELETE DESTROY
       ########################################################################################
-      #describe "DELETE destroy" do
+      describe "DELETE destroy" do
 
-        #it "should find menu item and destroy" do
-          #expect(MenuItem).to receive(:find).with(id).and_return(menu_item)
-          #expect(menu_item).to receive(:destroy).and_return(:true)
-          #delete :destroy, :id => id
+        it "should find menu item and destroy" do
+          expect(MenuItem).to receive(:find).with(id).and_return(menu_item)
+          expect(menu_item).to receive(:destroy).and_return(:true)
+          delete :destroy, :id => id
 
-          ## expect(response).to redirect_to(menus_path)
-        #end
-      #end
+          expect(response).to redirect_to(menus_path)
+        end
+      end
     end
 
-    #describe "while not logged in" do
-      #before(:each) do
-        #logout
-      #end
+    #TODO: Need to figure out what to do with authentication
+    describe "while not logged in", :skip => true do
+      before(:each) do
+        logout
+      end
 
-      #describe "every action" do
-        #it "should return 401" do
-          #get :show, :id => 1
-          #expect(response.status).to eq(401)
-          #put :update, :id => 1
-          #expect(response.status).to eq(401)
-          #delete :destroy, :id => 1
-          #expect(response.status).to eq(401)
-          #post :create
-          #expect(response.status).to eq(401)
-        #end
-      #end
-    #end
+      describe "every action" do
+        it "should return 401" do
+          get :show, :id => 1
+          expect(response.status).to eq(401)
+          put :update, :id => 1
+          expect(response.status).to eq(401)
+          delete :destroy, :id => 1
+          expect(response.status).to eq(401)
+          post :create
+          expect(response.status).to eq(401)
+        end
+      end
+    end
   end
 end
 

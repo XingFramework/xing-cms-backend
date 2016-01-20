@@ -34,9 +34,7 @@ module XingCmsBackend
       menu_item = MenuItem.find(params[:id])
       menu_item.destroy
 
-      render :nothing => true
-
-      # redirect_to menus_path
+      redirect_to menus_path
     end
   end
 end
