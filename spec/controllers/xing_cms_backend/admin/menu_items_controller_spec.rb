@@ -93,33 +93,32 @@ module XingCmsBackend
       ########################################################################################
       #                                      PUT UPDATE
       ########################################################################################
-      #describe "responding to PUT update" do
+      describe "responding to PUT update" do
 
-        #it "should update with menu item mapper and pass the JSON to it" do
-          #expect(MenuItemMapper).to receive(:new).with(json, id).and_return(mock_menu_item_mapper)
-          #expect(mock_menu_item_mapper).to receive(:save).and_return(true)
-          #expect(mock_menu_item_mapper).to receive(:menu_item).and_return(mock_menu_item)
-          #expect(Admin::MenuItemSerializer).to receive(:new).with(mock_menu_item).and_return(serializer)
+        it "should update with menu item mapper and pass the JSON to it" do
+          expect(MenuItemMapper).to receive(:new).with(json, id).and_return(mock_menu_item_mapper)
+          expect(mock_menu_item_mapper).to receive(:save).and_return(true)
+          expect(mock_menu_item_mapper).to receive(:menu_item).and_return(mock_menu_item)
+          expect(Admin::MenuItemSerializer).to receive(:new).with(mock_menu_item).and_return(serializer)
 
-          #expect(controller).to receive(:render).
-            #with(:json => serializer).
-            #and_call_original
+          expect(controller).to receive(:render).
+            with(:json => serializer).
+            and_call_original
 
-          #put :update, json, { :id => id}
-        #end
+          put :update, json, { :id => id}
+        end
 
-        #it "should render status 422 if not updated" do
-          #expect(MenuItemMapper).to receive(:new).with(json, id).and_return(mock_menu_item_mapper)
-          #expect(mock_menu_item_mapper).to receive(:save).and_return(false)
-          #expect(mock_menu_item_mapper).to receive(:errors).and_return(mock_errors)
-          #expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
+        it "should render status 422 if not updated" do
+          expect(MenuItemMapper).to receive(:new).with(json, id).and_return(mock_menu_item_mapper)
+          expect(mock_menu_item_mapper).to receive(:save).and_return(false)
+          expect(mock_menu_item_mapper).to receive(:errors).and_return(mock_errors)
+          expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
 
-          #post :update, json, { :id => id }
+          post :update, json, { :id => id }
 
-          #expect(response).to reject_as_unprocessable
-        #end
-      #end
-
+          expect(response).to reject_as_unprocessable
+        end
+      end
 
 
       ########################################################################################
