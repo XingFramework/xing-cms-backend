@@ -100,36 +100,33 @@ module XingCmsBackend
       ########################################################################################
       #                                      PUT UPDATE
       ########################################################################################
-      #describe "responding to PUT update" do
+      describe "responding to PUT update" do
 
-        #it "should update with page mapper and pass the JSON to it" do
-          #expect(PageMapper).to receive(:new).with(json, url_slug).and_return(mock_page_mapper)
-          #expect(mock_page_mapper).to receive(:save).and_return(true)
-          #expect(mock_page_mapper).to receive(:page).and_return(mock_page)
-          #expect(Admin::PageSerializer).to receive(:new).with(mock_page).and_return(serializer)
+        it "should update with page mapper and pass the JSON to it" do
+          expect(PageMapper).to receive(:new).with(json, url_slug).and_return(mock_page_mapper)
+          expect(mock_page_mapper).to receive(:save).and_return(true)
+          expect(mock_page_mapper).to receive(:page).and_return(mock_page)
+          expect(Admin::PageSerializer).to receive(:new).with(mock_page).and_return(serializer)
 
-          #expect(controller).to receive(:render).
-            #with(:json => serializer).
-            #and_call_original
+          expect(controller).to receive(:render).
+            with(:json => serializer).
+            and_call_original
 
-          #put :update, json, { :url_slug => url_slug}
+          put :update, json, { :url_slug => url_slug}
 
-        #end
+        end
 
-        #it "should render status 422 if not updated" do
-          #expect(PageMapper).to receive(:new).with(json, url_slug).and_return(mock_page_mapper)
-          #expect(mock_page_mapper).to receive(:save).and_return(false)
-          #expect(mock_page_mapper).to receive(:errors).and_return(mock_errors)
-          #expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
+        it "should render status 422 if not updated" do
+          expect(PageMapper).to receive(:new).with(json, url_slug).and_return(mock_page_mapper)
+          expect(mock_page_mapper).to receive(:save).and_return(false)
+          expect(mock_page_mapper).to receive(:errors).and_return(mock_errors)
+          expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
 
-          #post :update, json, { :url_slug => url_slug }
+          post :update, json, { :url_slug => url_slug }
 
-          #expect(response).to reject_as_unprocessable
-        #end
-      #end
-
-
-
+          expect(response).to reject_as_unprocessable
+        end
+      end
 
       ########################################################################################
       #                                      DELETE DESTROY

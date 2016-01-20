@@ -24,15 +24,15 @@ module XingCmsBackend
     end
 
     # PUT /admin/pages/:url_slug
-    #def update
-      #mapper = PageMapper.new(json_body, params[:url_slug])
+    def update
+      mapper = PageMapper.new(json_body, params[:url_slug])
 
-      #if mapper.save
-        #render :json => Admin::PageSerializer.new(mapper.page)
-      #else
-        #failed_to_process(mapper.errors)
-      #end
-    #end
+      if mapper.save
+        render :json => Admin::PageSerializer.new(mapper.page)
+      else
+        failed_to_process(mapper.errors)
+      end
+    end
 
     # DELETE /admin/pages/:url_slug
     #def destroy
